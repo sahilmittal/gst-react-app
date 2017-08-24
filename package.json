@@ -26,8 +26,12 @@
   },
   "homepage": "https://github.com/sahilmittal/react-boilerplate#readme",
   "dependencies": {
+    "axios": "^0.15.2",
     "react": "^15.6.1",
-    "react-dom": "^15.6.1"
+    "react-dom": "^15.6.1",
+    "react-redux": "^5.0.5",
+    "redux": "^3.7.1",
+    "redux-logger": "^3.0.6"
   },
   "devDependencies": {
     "babel-core": "^6.25.0",
