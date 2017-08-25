@@ -1,12 +1,26 @@
 import React from 'react'
 import Header from './Header'
+import { connect } from 'react-redux'
 
-export default class App extends React.Component {
+class App extends React.Component {
 
   render () {
     return (
-     <Header />
+      <div>
+        <Header />
+
+      </div>
     );
   }
 
 }
+
+const mapStateToProps = (state) => {
+  return {}
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App)
