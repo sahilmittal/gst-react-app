@@ -11,6 +11,9 @@ var config = {
     filename: "bundle.js",
     publicPath: "/"
   },
+  devServer: {
+    historyApiFallback: true
+  },
   module: {
     loaders: [
       {
