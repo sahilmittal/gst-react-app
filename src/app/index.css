@@ -1,3 +1,42 @@
 #app {
-  background: #EEE;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 300;
 }
+.highlight{
+  background: #ffe462;
+  color: #000;
+  display: inline-block;
+  padding: 0 3px;
+  border-radius: 4px;
+}
+/**/
+.results{
+  padding: 10px; 
+}
+.row{
+  font-size: 14px;
+  border-bottom: 1px solid #EEE;
+  padding: 10px;
+}
+.label{
+  font-size: 10px;
+  font-weight: 500;
+  margin-top: 12px;
+  display: inline-block;
+  padding: 2px 4px;
+  border-radius: 5px;
+  text-transform: uppercase;
+}
+.label .good{
+  border: 1px solid blue;
+  color: blue;
+}
+.label .service{
+  border: 1px solid red;
+  color: red;
+}
+.name{
+  color: rgba(0, 0, 0, 0.8);
+  margin-top: 5px;
+}
+/**/

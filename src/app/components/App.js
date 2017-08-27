@@ -9,7 +9,8 @@ import { connect } from 'react-redux'
 class App extends React.Component {
 
   state = {
-    searchResults: []
+    searchResults: [],
+    searchText: ''
   }
 
   performSearch = (searchParams) => {
@@ -26,7 +27,7 @@ class App extends React.Component {
     .then(response => {
       const searchResults = response.data
       if(searchResults.length > 0) {
-        this.setState({searchResults})
+        this.setState({searchText, searchResults})
       }
     })
     .catch(function (error) {
@@ -35,12 +36,12 @@ class App extends React.Component {
   }
 
   render () {
-    const {searchResults} = this.state
+    const {searchText, searchResults} = this.state
     return (
       <div>
         <Header />
         <Search performSearch={this.performSearch} />
-        <SearchResults data={searchResults} />
+        <SearchResults searchText={searchText} data={searchResults} />
       </div>
     );
   }
