@@ -4,6 +4,10 @@ export const highlighText = (str, highlightString) => {
   return replaceAll(str, find, replace)
 }
 
+export const isNumber = (n) => {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}
+
 const replaceAll = (str, find, replace) => {
   var re = new RegExp(find, 'gi');
   return str.replace(re, replace);

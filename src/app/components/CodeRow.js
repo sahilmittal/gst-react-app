@@ -6,10 +6,9 @@ const CodeRow = (props) => {
   const htmlText = highlighText(row.name, searchText)
   const labelText = (row.code_type == 'HSN') ? 'good' : 'service'
   return(
-    <div className='row code'>
-      <div><b>{row.code_type}: {row.code}</b></div>
-      <div className='label {labelText}'>{labelText}</div>
-      <div className='name' dangerouslySetInnerHTML={{__html: htmlText}} />
+    <div className='row'>
+      <div className='code'>{row.code_type}: {row.code}</div>
+      <div className='label'>{labelText}</div><span className='name' dangerouslySetInnerHTML={{__html: htmlText}} />
     </div>
   )
 }

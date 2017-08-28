@@ -1,15 +1,15 @@
 import React, { PropTypes } from 'react'
-import { highlighText } from '../lib'
+import { highlighText, isNumber } from '../lib'
 
 const GoodRow = (props) => {
   const {row, searchText} = props
-  let htmlText = highlighText(row.name, searchText)
+  const htmlText = highlighText(row.name, searchText)
+  const gst = (isNumber(row.gst)) ? <div>{Number(row.gst)}%</div> : <div>{row.gst}</div>
   return(
-    <div>
-      <div dangerouslySetInnerHTML={{__html: htmlText}} />
-      <div><b>{row.gst}</b></div>
-      <div><b>{row.category.name}</b></div>
-      <hr/>
+    <div className='row'>
+      <div className='gst'>{gst}</div>
+      <div className='category'>{row.category.name}</div>
+      <div className='label'>good</div><span dangerouslySetInnerHTML={{__html: htmlText}} />
     </div>
   )
 }

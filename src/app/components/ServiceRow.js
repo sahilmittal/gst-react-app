@@ -5,10 +5,9 @@ const ServiceRow = (props) => {
   const {row, searchText} = props
   let htmlText = highlighText(row.name, searchText)
   return(
-    <div>
-      <div dangerouslySetInnerHTML={{__html: htmlText}} />
-      <div><b>{row.gst}</b></div>
-      <hr />
+    <div className='row'>
+      <div className='gst'>{row.gst}</div>
+      <div className='label'>service</div><span dangerouslySetInnerHTML={{__html: htmlText}} />
     </div>
   )
 }
