@@ -1,33 +1,33 @@
 import React, { PropTypes } from 'react'
 import axios from 'axios'
 import StatusDiv from '../StatusDiv'
-import Goods from './Goods'
+import Resources from './Resources'
 import { GST_API_URL } from '../../constants/Endpoints'
 
-export default class GoodCategories extends React.Component {
+export default class ResourceLibraries extends React.Component {
 
   state = {
     data: [],
     status: '',
-    categories: {}
+    libraries: {}
   }
 
-  fetchCategories = () => {
+  fetchResourceLibraries = () => {
     const {data} = this.state
     
     this.setState({data: [], status: 'busy'})
-    axios.get(GST_API_URL + '/api/v1/categories')
+    axios.get(GST_API_URL + '/api/v1/resource_libraries')
     .then(response => {
       const data = response.data
       if(data.length > 0) {
-        let categoryObj = {}
+        let resourceLibObj = {}
         data.forEach(function (rl) {
-          categoryObj[rl.id] = {
+          resourceLibObj[rl.id] = {
             status: '',
-            goods: []
+            resources: []
           }
         })
-        this.setState({data, status: 'success', categories: categoryObj})
+        this.setState({data, status: 'success', libraries: resourceLibObj})
       } else {
         this.setState({data, status: 'nr'})
       }
@@ -37,45 +37,46 @@ export default class GoodCategories extends React.Component {
     })
   }
 
-  fetchGoods = (categoryId) => {
-    let {categories} = this.state
-    categories[categoryId] = {
+  fetchResources = (resourceId) => {
+    let {libraries} = this.state
+    libraries[resourceId] = {
       status: 'busy',
-      goods: []
+      resources: []
     }
-    this.setState({categories})
-    axios.get(GST_API_URL + '/api/v1/categories/' + categoryId + '/goods')
+    this.setState({libraries})
+    axios.get(GST_API_URL + '/api/v1/resource_libraries/' + resourceId + '/resources')
     .then(response => {
       const data = response.data
       if(data.length > 0) {
-        categories[categoryId] = {
+        libraries[resourceId] = {
           status: 'success',
-          goods: data  
+          resources: data  
         }
-        this.setState({categories})
+        this.setState({libraries})
       } else {
-        categories[categoryId] = {
+        libraries[resourceId] = {
           status: 'nr',
-          goods: []  
+          resources: []  
         }
-        this.setState({categories})
+        this.setState({libraries})
       }
     })
     .catch(function (error) {
-      categories[categoryId] = {
+      libraries[resourceId] = {
         status: 'nr',
-        goods: []  
+        resources: []  
       }
-      this.setState({categories})
+      this.setState({libraries})
     })
   }
 
   componentWillMount () {
-    this.fetchCategories()
+    this.fetchResourceLibraries()
   }
 
   render() {
-    const {data, status, categories} = this.state
+    const {data, status, libraries} = this.state
+    console.log(libraries)
     if(status == 'busy') {
       return <StatusDiv headerText='Loading...' subHeadText='' />
     } else if (status == 'nr') {
@@ -83,13 +84,13 @@ export default class GoodCategories extends React.Component {
     } else if (status == 'error') {
       return <StatusDiv headerText='Something went wrong!' subHeadText="An unexpected error has occurred." />
     } else if (status == 'success') {
-      return <div className='results goods'>
+      return <div className='results resources'>
         {
           data.map((row, index) => {
             return (
               <div key={row.id} className='link-row'>
-                <a className='name' onClick={this.fetchGoods.bind(this, row.id)}>{index+1}. {row.name}</a>
-                <Goods data={categories[row.id]} />
+                <a className='name' onClick={this.fetchResources.bind(this, row.id)}>{index+1}. {row.name}</a>
+                <Resources data={libraries[row.id]} />
               </div>
             )
           })
@@ -100,6 +101,6 @@ export default class GoodCategories extends React.Component {
   }
 }
 
-GoodCategories.propTypes = {
+ResourceLibraries.propTypes = {
 
 }

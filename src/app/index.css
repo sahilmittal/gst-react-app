@@ -127,10 +127,20 @@ body{
 .results{
   padding: 10px; 
 }
+.results.goods a, .results.resources a{
+  font-weight: 400; 
+}
 .row{
   font-size: 14px;
   border-bottom: 1px solid #EEE;
   padding: 10px 20px;
+}
+.link-row{
+  font-size: 14px;
+  padding: 10px 20px; 
+}
+.link-row a{
+  color: #234777;
 }
 .label{
   font-size: 10px;
@@ -164,4 +174,16 @@ body{
   background: yellow;
   color: #000;
   display: inline-block;
+}
+.download-link{
+  font-weight: 300;
+  font-size: 0.9em;
+  margin-left: 10px;
+}
+
+/*
+  Feedback
+*/
+.feedback{
+  
 }

@@ -3,7 +3,7 @@ import { highlighText } from '../lib'
  
 const CodeRow = (props) => {
   const {row, searchText} = props
-  const htmlText = highlighText(row.name, searchText)
+  const htmlText = (searchText) ? highlighText(row.name, searchText) : row.name
   const labelText = (row.code_type == 'HSN') ? 'good' : 'service'
   return(
     <div className='row'>

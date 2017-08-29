@@ -9,6 +9,6 @@ const TaxCalculator = (props) => {
 }
 
 TaxCalculator.propTypes = {
-};
+}
 
 export default TaxCalculator

@@ -1,14 +1,27 @@
 import React, { PropTypes } from 'react'
 
-const Feedback = (props) => {
-  return(
-    <div>
-      Feedback
-    </div>
-  )
+export default class Feedback extends React.Component {
+
+  state = {
+    status: '',
+    email: '',
+    message: ''
+  }
+
+  handleSubmit = () => {
+
+  }
+
+  render () {
+    // const 
+    return(
+      <div className='feedback'>
+        Feedback
+      </div>
+    )
+  }
+
 }
 
 Feedback.propTypes = {
-};
-
-export default Feedback
+}

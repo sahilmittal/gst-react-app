@@ -6,7 +6,7 @@ import Search from './Search'
 import SearchResults from './SearchResults'
 import GoodCategories from './menu/GoodCategories'
 import Services from './menu/Services'
-import Resources from './menu/Resources'
+import ResourceLibraries from './menu/ResourceLibraries'
 import TaxCalculator from './menu/TaxCalculator'
 import Feedback from './menu/Feedback'
 import StatusDiv from './StatusDiv'
@@ -45,7 +45,7 @@ class App extends React.Component {
     })
     .catch(function (error) {
       this.setState({searchText, data, status: 'error'})
-    });
+    })
   }
 
   handlePageChange = (page) => this.setState({activePage: page})
@@ -66,11 +66,11 @@ class App extends React.Component {
         resultBox = <SearchResults searchText={searchText} data={data} />
       }
     } else if(activePage == 'goodCategories') {
-      resultBox = <GoodCategories data={data} />
+      resultBox = <GoodCategories />
     } else if(activePage == 'services') {
-      resultBox = <Services data={data} />
+      resultBox = <Services />
     } else if(activePage == 'resources') {
-      resultBox = <Resources data={data} />
+      resultBox = <ResourceLibraries />
     } else if(activePage == 'taxCalculator') {
       resultBox = <TaxCalculator />
     } else if(activePage == 'feedback') {

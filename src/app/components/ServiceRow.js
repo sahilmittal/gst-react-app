@@ -3,7 +3,7 @@ import { highlighText } from '../lib'
 
 const ServiceRow = (props) => {
   const {row, searchText} = props
-  let htmlText = highlighText(row.name, searchText)
+  let htmlText = (searchText) ? highlighText(row.name, searchText) : row.name
   return(
     <div className='row'>
       <div className='gst'>{row.gst}</div>
