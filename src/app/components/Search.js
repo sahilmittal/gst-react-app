@@ -25,7 +25,7 @@ export default class Search extends React.Component {
 
   render () {
     const {searchText, searchOption} = this.state
-    const placeholder = (searchOption == 'default') ? 'Eg: vegetables, printer, dry fruits etc.' : 'Eg: gambling, supply of food/drinks, transport of goods etc.' 
+    const placeholder = (searchOption == 'default') ? 'Eg: vegetables, printer, dry fruits etc.' : 'Eg: gambling, supply of food/drinks etc.' 
     return (
       <div className='search'>
         <div className='search-block'>
