@@ -1,9 +1,10 @@
 import React, { PropTypes } from 'react'
+import StatusDiv from '../StatusDiv'
 
 const TaxCalculator = (props) => {
   return(
     <div>
-      Tax Calculator
+      <StatusDiv headerText='Tax Calculator' subHeadText="Coming soon..." />
     </div>
   )
 }

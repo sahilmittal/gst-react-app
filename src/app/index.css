@@ -6,6 +6,9 @@ body{
   font-family: 'Montserrat', sans-serif !important;
   font-weight: 300;
 }
+input, textarea, button{
+  font-family: 'Montserrat', sans-serif !important;  
+}  
 .abs{
   position: fixed;
   top: 25%;
@@ -22,6 +25,10 @@ body{
   font-size: 24px;
   font-weight: 500;
   margin-bottom: 5px;
+}
+.disabled{
+  pointer-events: none;
+  opacity: 0.3;
 }
 
 /* 
@@ -73,13 +80,12 @@ body{
   background: #234777;
 }
 .search-block input{
-  font-family: 'Montserrat', sans-serif !important;
   width: 95%;
   padding: 3% 2.5%;
   border: none;
   font-size: 16px;
 }
-.submit-btn{
+.search-block .submit-btn{
   display: inline-block;
   position: absolute;
   right: 0;
@@ -185,5 +191,28 @@ body{
   Feedback
 */
 .feedback{
-  
+  padding: 20px;
+  text-align: center;
+  width: 30%;
+  margin: 0 auto;
+}
+.feedback input{
+  padding: 10px;
+  width: 100%; 
+  margin-bottom: 10px;
+}
+.feedback textarea{
+  padding: 10px;
+  width: 100%; 
+  margin-bottom: 10px;
+}
+.feedback .submit-btn{
+  display: inline-block;
+  background: #3e84ed;
+  color: white;
+  padding: 10px;
+  width: 100px;
+  border-radius: 3px;
+  font-size: 14px;
+  cursor: pointer;
 }
