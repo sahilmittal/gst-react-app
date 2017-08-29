@@ -23,7 +23,10 @@ body{
   font-weight: 500;
   margin-bottom: 5px;
 }
-/* header */
+
+/* 
+  Header 
+*/
 .header{
   font-size: 36px;
   font-weight: 500;
@@ -32,12 +35,15 @@ body{
   color: white;
   padding: 35px 0;
 }
-/* search */
+
+/* 
+  Search
+*/
 .search{
   text-align: center;
   font-size: 18px;
   background: #418cff;
-  padding-bottom: 50px;
+  padding-bottom: 25px;
 }
 .search .search-block{
   border-radius: 5px;
@@ -81,13 +87,43 @@ body{
   color: #666;
   cursor: pointer;
 }
-/**/
-.highlight{
-  background: yellow;
-  color: #000;
-  display: inline-block;
+
+/*
+  Menu
+*/
+.menu {
+  background: #418cff;
+  text-align: center;
+  padding-bottom: 20px;
 }
-/**/
+.menu-option {
+  text-align: center;
+  display: inline-block;
+  margin: 0 30px;
+  width: 75px;
+  cursor: pointer;
+  vertical-align: bottom;
+  color: white;
+  background: #3e84ed;
+  border-radius: 5px;
+  padding: 5px 0px;
+}
+.menu-option:hover, .menu-option.active {
+  background: #234777;
+  /*color: #234777;*/
+  /*font-weight: 500;*/
+}
+.menu-option .icon {
+}
+.menu-option .text {
+  font-size: 12px;
+  min-height: 25px;
+  line-height: 1em;
+}
+
+/*
+  Results
+*/
 .results{
   padding: 10px; 
 }
@@ -123,4 +159,9 @@ body{
 .code{
   font-weight: 500;
   margin-bottom: 10px;
+}
+.highlight{
+  background: yellow;
+  color: #000;
+  display: inline-block;
 }
