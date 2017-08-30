@@ -1,15 +1,17 @@
 import React, { PropTypes } from 'react'
 import StatusDiv from '../StatusDiv'
 
-const TaxCalculator = (props) => {
-  return(
-    <div>
-      <StatusDiv headerText='Tax Calculator' subHeadText="Coming soon..." />
-    </div>
-  )
+export default class TaxCalculator extends React.component = (props) => {
+
+  render () {
+    return(
+      <div className='tax-calculator'>
+        
+      </div>
+    )
+  }
+
 }
 
 TaxCalculator.propTypes = {
 }
-
-export default TaxCalculator
