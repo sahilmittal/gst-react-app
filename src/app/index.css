@@ -220,6 +220,55 @@ input, textarea, button{
   font-size: 14px;
   cursor: pointer;
 }
+
+/*
+  Tax calculator
+*/
 .tax-calculator {
-  
+  text-align: center;
+  width: 30%;
+  margin: 40px auto;
+}
+.tax-calculator .radio {
+  display: inline-block;
+  margin: 20px 10px;
+}
+.tax-calculator .initial-amount input {
+  margin-left: 15px;
+  padding: 10px;
+}
+.tax-calculator .gst-btn {
+  width: 70px;
+  display: inline-block;
+  border: 2px solid #234777;
+  font-size: 13px;
+  height: 49px;
+  border-radius: 50%;
+  cursor: pointer;
+  padding-top: 20px;
+  margin: 0 15px;
+  color: #234777;
+}
+.tax-calculator .gst-btn.active {
+  background: #234777;
+  color: white;
+}
+.tax-calculator table.result {
+  font-size: 16px;
+  text-align: center;
+  width: 85%;
+  margin: 25px auto;
+  font-weight: 500;
+  border: 1px solid #CCC;
+  border-radius: 5px;
+  background: #FAFAFA;
+}
+.tax-calculator table.result td{
+  padding: 5px 5px;
+}
+.tax-calculator table.result tr:first-child td{
+  padding-top: 15px;
+}
+.tax-calculator table.result tr:last-child td{
+  padding-bottom: 15px;
 }
