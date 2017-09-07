@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
+
 import { highlighText } from '../lib'
 
 const ServiceRow = (props) => {
@@ -13,8 +15,8 @@ const ServiceRow = (props) => {
 }
 
 ServiceRow.propTypes = {
-   name: PropTypes.string,
-   gst: PropTypes.string,
-};
+  row: PropTypes.object,
+  searchText: PropTypes.string
+}
 
 export default ServiceRow

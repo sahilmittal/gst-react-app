@@ -1,4 +1,6 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
+
 import { highlighText } from '../lib'
  
 const CodeRow = (props) => {
@@ -14,9 +16,8 @@ const CodeRow = (props) => {
 }
 
 CodeRow.propTypes = {
-   name: PropTypes.string,
-   code: PropTypes.number,
-   code_type: PropTypes.string,
-};
+  row: PropTypes.object,
+  searchText: PropTypes.string
+}
 
 export default CodeRow

@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 
 export default class Menu extends React.Component {
 
@@ -16,4 +17,12 @@ export default class Menu extends React.Component {
       </div>
     )
   }
+}
+
+Menu.propTypes = {
+  page: PropTypes.string,
+  ico: PropTypes.string,
+  title: PropTypes.string,
+  activePage: PropTypes.string,
+  handleClick: PropTypes.func
 }

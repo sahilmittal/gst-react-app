@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+
 import StatusDiv from '../StatusDiv'
 
 export default class TaxCalculator extends React.Component {
@@ -101,9 +102,5 @@ export default class TaxCalculator extends React.Component {
       </div>
     )
   }
-
-}
-
-TaxCalculator.propTypes = {
 
 }

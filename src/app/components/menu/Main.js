@@ -1,4 +1,6 @@
 import React from 'react'
+import PropTypes from 'prop-types'
+
 import MenuOption from './MenuOption'
 
 export default class Menu extends React.Component {
@@ -21,4 +23,9 @@ export default class Menu extends React.Component {
     )
   }
 
+}
+
+Menu.propTypes = {
+  activePage: PropTypes.string,
+  handlePageChange: PropTypes.func
 }

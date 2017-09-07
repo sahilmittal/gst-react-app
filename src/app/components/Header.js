@@ -1,13 +1,16 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 
-export default class Header extends React.Component {
-
-  render () {
-    return (
-      <div className='header'>
-        GST Search
-      </div>
-    )
-  }
-
+const Header = (props) => {
+  return (
+    <div className='header'>
+      {props.children}
+    </div>
+  )
 }
+
+Header.propTypes = {
+  children: PropTypes.string
+}
+
+export default Header

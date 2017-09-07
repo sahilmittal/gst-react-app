@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
  
 const StatusDiv = (props) => {
   const {headerText, subHeadText} = props
@@ -11,8 +12,8 @@ const StatusDiv = (props) => {
 }
 
 StatusDiv.propTypes = {
-   headerText: PropTypes.string,
-   subHeadText: PropTypes.string
-};
+  headerText: PropTypes.string,
+  subHeadText: PropTypes.string
+}
 
 export default StatusDiv

@@ -1,8 +1,10 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import axios from 'axios'
+
 import StatusDiv from '../StatusDiv'
 import Goods from './Goods'
-import { GST_API_URL } from '../../constants/Endpoints'
+import { gstApiUrl } from '../../constants/Endpoints'
 
 export default class GoodCategories extends React.Component {
 
@@ -14,26 +16,27 @@ export default class GoodCategories extends React.Component {
 
   fetchCategories = () => {
     const {data} = this.state
-    
+    const {scrollToBottom} = this.props
     this.setState({data: [], status: 'busy'})
-    axios.get(GST_API_URL + '/api/v1/categories')
+    
+    axios.get(gstApiUrl + '/api/v1/categories')
     .then(response => {
       const data = response.data
       if(data.length > 0) {
         let categoryObj = {}
-        data.forEach(function (rl) {
+        data.forEach(rl => {
           categoryObj[rl.id] = {
             status: '',
             goods: []
           }
         })
         this.setState({data, status: 'success', categories: categoryObj})
-        this.props.scrollToBottom()
+        scrollToBottom()
       } else {
         this.setState({data, status: 'nr'})
       }
     })
-    .catch(function (error) {
+    .catch(error => {
       this.setState({data, status: 'error'})
     })
   }
@@ -45,7 +48,8 @@ export default class GoodCategories extends React.Component {
       goods: []
     }
     this.setState({categories})
-    axios.get(GST_API_URL + '/api/v1/categories/' + categoryId + '/goods')
+
+    axios.get(gstApiUrl + '/api/v1/categories/' + categoryId + '/goods')
     .then(response => {
       const data = response.data
       if(data.length > 0) {
@@ -62,7 +66,7 @@ export default class GoodCategories extends React.Component {
         this.setState({categories})
       }
     })
-    .catch(function (error) {
+    .catch(error => {
       categories[categoryId] = {
         status: 'nr',
         goods: []  
@@ -77,30 +81,38 @@ export default class GoodCategories extends React.Component {
 
   render() {
     const {data, status, categories} = this.state
-    if(status == 'busy') {
-      return <StatusDiv headerText='Loading...' subHeadText='' />
-    } else if (status == 'nr') {
-      return <StatusDiv headerText='Whoops!' subHeadText="We couldn't find any results." />
-    } else if (status == 'error') {
-      return <StatusDiv headerText='Something went wrong!' subHeadText="An unexpected error has occurred." />
-    } else if (status == 'success') {
-      return <div className='results goods'>
-        {
-          data.map((row, index) => {
-            return (
-              <div key={row.id} className='link-row'>
-                <a className='name' onClick={this.fetchGoods.bind(this, row.id)}>{index+1}. {row.name}</a>
-                <Goods data={categories[row.id]} />
-              </div>
-            )
-          })
+    return(
+      <div>
+        { // busy
+          (status == 'busy') && (<StatusDiv headerText='Loading...' subHeadText='' />)
+        }
+        { // nr
+          (status == 'nr') && (<StatusDiv headerText='Whoops!' subHeadText="We couldn't find any results." />)
+        }
+        { // error
+          (status == 'error') && (<StatusDiv headerText='Something went wrong!' subHeadText="An unexpected error has occurred." />)
+        }
+        { // success
+          (status == 'success') && (
+            <div className='results goods'>
+              {
+                data.map((row, index) => {
+                  return (
+                    <div key={row.id} className='link-row'>
+                      <a className='name' onClick={this.fetchGoods.bind(this, row.id)}>{index+1}. {row.name}</a>
+                      <Goods data={categories[row.id]} />
+                    </div>
+                  )
+                })
+              }
+            </div>
+          )
         }
       </div>
-    }
-    return <div></div>
+    )
   }
 }
 
 GoodCategories.propTypes = {
-
+  scrollToBottom: PropTypes.func
 }

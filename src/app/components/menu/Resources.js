@@ -1,28 +1,33 @@
-import React, { PropTypes } from 'react'
-import { GST_API_URL } from '../../constants/Endpoints'
+import React from 'react'
+import PropTypes from 'prop-types'
+
+import { gstApiUrl } from '../../constants/Endpoints'
 
 const Resources = (props) => {
-
   const {data} = props
-
-  if (data.status == 'success') {
-    return <div className='results'>
+  return (
+    <div>
       {
-        data.resources.map((row, index) => {
-          return (
-            <div key={row.id} className='link-row'>
-              <span className='name'>- {row.name}</span> <a className='download-link' href={GST_API_URL+'/api/v1/resources/'+row.id+'/download'}>Download</a>
-            </div>
-          )
-        })
+        (data.status == 'success') && (
+          <div className='results'>
+            {
+              data.resources.map((row, index) => {
+                return (
+                  <div key={row.id} className='link-row'>
+                    <span className='name'>- {row.name}</span> <a className='download-link' href={gstApiUrl+'/api/v1/resources/'+row.id+'/download'}>Download</a>
+                  </div>
+                )
+              })
+            }
+          </div>
+        )     
       }
     </div>
-  }
-  return <div></div>
+  )
 }
 
 Resources.propTypes = {
-
+  data: PropTypes.object
 }
 
 export default Resources

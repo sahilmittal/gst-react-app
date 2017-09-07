@@ -1,7 +1,8 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import axios from 'axios'
+
 import StatusDiv from '../StatusDiv'
-import { GST_API_URL } from '../../constants/Endpoints'
+import { gstApiUrl } from '../../constants/Endpoints'
 
 export default class Feedback extends React.Component {
 
@@ -20,7 +21,7 @@ export default class Feedback extends React.Component {
   handleSubmit = () => {
     const {email, message} = this.state
     this.setState({status: 'busy'})
-    axios.post(GST_API_URL + '/api/v1/feedbacks', {email, message})
+    axios.post(gstApiUrl + '/api/v1/feedbacks', {email, message})
     .then(response => {
       if(response.data.id > 0) {
         this.setState({status: 'success'})
@@ -47,7 +48,4 @@ export default class Feedback extends React.Component {
     return <StatusDiv headerText='Thanks! :)' subHeadText="Your feedback is successfully submit. Thanks for your time." />
   }
 
-}
-
-Feedback.propTypes = {
 }

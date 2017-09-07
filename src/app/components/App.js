@@ -13,7 +13,7 @@ import ResourceLibraries from './menu/ResourceLibraries'
 import TaxCalculator from './menu/TaxCalculator'
 import Feedback from './menu/Feedback'
 import StatusDiv from './StatusDiv'
-import { GST_API_URL } from '../constants/Endpoints'
+import { gstApiUrl } from '../constants/Endpoints'
 
 class App extends React.Component {
 
@@ -45,7 +45,7 @@ class App extends React.Component {
     if(searchOption == 'codes'){
       path = '/api/v1/codes'
     }
-    axios.get(GST_API_URL + path, {
+    axios.get(gstApiUrl + path, {
       params: {
         q: searchText
       }
@@ -68,38 +68,41 @@ class App extends React.Component {
   render () {
 
     const {searchText, data, status, activePage} = this.state
-    let resultBox = <div></div>
 
-    if(activePage == 'search') {
-      if(status == 'busy') {
-        resultBox = <StatusDiv headerText='Loading...' subHeadText='' />
-      } else if (status == 'nr') {
-        resultBox = <StatusDiv headerText='Whoops!' subHeadText="We couldn't find any results." />
-      } else if (status == 'error') {
-        resultBox = <StatusDiv headerText='Something went wrong!' subHeadText="An unexpected error has occurred." />
-      } else if (status == 'success') {
-        resultBox = <SearchResults searchText={searchText} data={data} />
-      }
-    } else if(activePage == 'goodCategories') {
-      resultBox = <GoodCategories scrollToBottom={this.scrollToBottom} />
-    } else if(activePage == 'services') {
-      resultBox = <Services scrollToBottom={this.scrollToBottom} />
-    } else if(activePage == 'resources') {
-      resultBox = <ResourceLibraries scrollToBottom={this.scrollToBottom} />
-    } else if(activePage == 'taxCalculator') {
-      resultBox = <TaxCalculator />
-    } else if(activePage == 'feedback') {
-      resultBox = <Feedback />
-    }
     return (
       <div>
-        <Header />
+        <Header>GST Search</Header>
         <Search performSearch={this.performSearch} />
-        <div ref={(el) => { this.messagesEnd = el }}></div>
-        <Menu activePage={activePage} handlePageChange={this.handlePageChange} />
-        {resultBox}
+        <Menu ref={(el) => { this.messagesEnd = el }} activePage={activePage} handlePageChange={this.handlePageChange} />
+        { // search/busy
+          (activePage == 'search' && status == 'busy') && (<StatusDiv headerText='Loading...' subHeadText='' />)
+        }
+        { // search/nr
+          (activePage == 'search' && status == 'nr') && (<StatusDiv headerText='Whoops!' subHeadText="We couldn't find any results." />)
+        }
+        { // search/error
+          (activePage == 'search' && status == 'error') && (<StatusDiv headerText='Something went wrong!' subHeadText="An unexpected error has occurred." />)
+        }
+        { // search/success
+          (activePage == 'search' && status == 'success') && (<SearchResults searchText={searchText} data={data} />)
+        }
+        { // goodCategories
+          (activePage == 'goodCategories') && (<GoodCategories scrollToBottom={this.scrollToBottom} />)
+        }
+        { // services
+          (activePage == 'services') && (<Services scrollToBottom={this.scrollToBottom} />)
+        }
+        { // resources
+          (activePage == 'resources') && (<ResourceLibraries scrollToBottom={this.scrollToBottom} />)
+        }
+        { // taxCalculator
+          (activePage == 'taxCalculator') && (<TaxCalculator />)
+        }
+        { // feedback
+          (activePage == 'feedback') && (<Feedback />)
+        }
       </div>
-    );
+    )
   }
 
 }
