@@ -11,6 +11,14 @@ export default class Services extends React.Component {
     status: ''
   }
 
+  componentDidMount() {
+    this.props.scrollToBottom()
+  }
+
+  componentDidUpdate() {
+    this.props.scrollToBottom()
+  }
+
   fetchData = () => {
     const {data} = this.state
     

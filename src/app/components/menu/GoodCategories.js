@@ -28,6 +28,7 @@ export default class GoodCategories extends React.Component {
           }
         })
         this.setState({data, status: 'success', categories: categoryObj})
+        this.props.scrollToBottom()
       } else {
         this.setState({data, status: 'nr'})
       }

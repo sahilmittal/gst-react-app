@@ -28,6 +28,7 @@ export default class ResourceLibraries extends React.Component {
           }
         })
         this.setState({data, status: 'success', libraries: resourceLibObj})
+        this.props.scrollToBottom()
       } else {
         this.setState({data, status: 'nr'})
       }

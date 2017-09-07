@@ -1,5 +1,8 @@
 import React from 'react'
+import ReactDOM from 'react-dom'
 import axios from 'axios'
+import { connect } from 'react-redux'
+
 import Header from './Header'
 import Menu from './menu/Main'
 import Search from './Search'
@@ -11,7 +14,6 @@ import TaxCalculator from './menu/TaxCalculator'
 import Feedback from './menu/Feedback'
 import StatusDiv from './StatusDiv'
 import { GST_API_URL } from '../constants/Endpoints'
-import { connect } from 'react-redux'
 
 class App extends React.Component {
 
@@ -20,6 +22,19 @@ class App extends React.Component {
     searchText: '',
     status: '',
     activePage: 'search'
+  }
+
+  componentDidMount() {
+    this.scrollToBottom()
+  }
+
+  componentDidUpdate() {
+    this.scrollToBottom()
+  }
+
+  scrollToBottom = () => {
+    const node = ReactDOM.findDOMNode(this.messagesEnd)
+    node.scrollIntoView({ behavior: "smooth" })
   }
 
   performSearch = (searchParams) => {
@@ -43,8 +58,8 @@ class App extends React.Component {
         this.setState({searchText, data, status: 'nr'})
       }
     })
-    .catch(function (error) {
-      this.setState({searchText, data, status: 'error'})
+    .catch(error => {
+      this.setState({searchText, status: 'error'})
     })
   }
 
@@ -66,11 +81,11 @@ class App extends React.Component {
         resultBox = <SearchResults searchText={searchText} data={data} />
       }
     } else if(activePage == 'goodCategories') {
-      resultBox = <GoodCategories />
+      resultBox = <GoodCategories scrollToBottom={this.scrollToBottom} />
     } else if(activePage == 'services') {
-      resultBox = <Services />
+      resultBox = <Services scrollToBottom={this.scrollToBottom} />
     } else if(activePage == 'resources') {
-      resultBox = <ResourceLibraries />
+      resultBox = <ResourceLibraries scrollToBottom={this.scrollToBottom} />
     } else if(activePage == 'taxCalculator') {
       resultBox = <TaxCalculator />
     } else if(activePage == 'feedback') {
@@ -80,6 +95,7 @@ class App extends React.Component {
       <div>
         <Header />
         <Search performSearch={this.performSearch} />
+        <div ref={(el) => { this.messagesEnd = el }}></div>
         <Menu activePage={activePage} handlePageChange={this.handlePageChange} />
         {resultBox}
       </div>

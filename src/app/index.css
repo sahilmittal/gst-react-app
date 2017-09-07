@@ -15,17 +15,17 @@ input, textarea, button{
 .abs{
   position: fixed;
   top: 25%;
-  margin-top: 240px;
+  margin-top: 325px;
   transform: translateY(-50%);
   text-align: center;
   width: 100%;
   color: #999;
 }
 .detailed{
-  font-size: 14px;
+  font-size: 0.9em;
 }
 .detailed .heading{
-  font-size: 24px;
+  font-size: 1.6em;
   font-weight: 500;
   margin-bottom: 5px;
 }
@@ -38,7 +38,7 @@ input, textarea, button{
   Header 
 */
 .header{
-  font-size: 36px;
+  font-size: 2.2em;
   font-weight: 500;
   text-align: center;
   background: #418cff;
@@ -51,14 +51,15 @@ input, textarea, button{
 */
 .search{
   text-align: center;
-  font-size: 18px;
+  font-size: 1.2em;
   background: #418cff;
   padding-bottom: 25px;
   margin: -1px 0;
 }
 .search .search-block{
   border-radius: 5px;
-  width: 50%;
+  width: 95%;
+  max-width: 35rem;
   margin: 0 auto;
   position: relative;
 }
@@ -68,7 +69,7 @@ input, textarea, button{
   background: #3e84ed;
   color: white;
   cursor: pointer;
-  font-size: 14px;
+  font-size: 0.8em;
   padding: 15px 0;
 }
 .search-options span:first-child{
@@ -87,7 +88,7 @@ input, textarea, button{
   width: 95%;
   padding: 3% 2.5%;
   border: none;
-  font-size: 16px;
+  font-size: 0.9em;
 }
 .search-block .submit-btn{
   display: inline-block;
@@ -109,7 +110,7 @@ input, textarea, button{
 .menu-option {
   text-align: center;
   display: inline-block;
-  margin: 0 30px;
+  margin: 0.5em 1em;
   width: 75px;
   cursor: pointer;
   vertical-align: bottom;
@@ -126,7 +127,7 @@ input, textarea, button{
 .menu-option .icon {
 }
 .menu-option .text {
-  font-size: 12px;
+  font-size: 0.75em;
   min-height: 25px;
   line-height: 1em;
 }
@@ -141,19 +142,19 @@ input, textarea, button{
   font-weight: 400; 
 }
 .row{
-  font-size: 14px;
+  font-size: 0.85em;
   border-bottom: 1px solid #EEE;
   padding: 10px 20px;
 }
 .link-row{
-  font-size: 14px;
+  font-size: 0.85em;
   padding: 10px 20px; 
 }
 .link-row a{
   color: #234777;
 }
 .label{
-  font-size: 10px;
+  font-size: 0.7em;
   font-weight: 500;
   margin-right: 5px;
   display: inline-block;
@@ -183,7 +184,6 @@ input, textarea, button{
 .highlight{
   background: yellow;
   color: #000;
-  display: inline-block;
 }
 .download-link{
   font-weight: 300;
@@ -197,7 +197,8 @@ input, textarea, button{
 .feedback{
   padding: 20px;
   text-align: center;
-  width: 30%;
+  width: 75%;
+  max-width: 25rem;
   margin: 0 auto;
 }
 .feedback input{
@@ -217,7 +218,7 @@ input, textarea, button{
   padding: 10px;
   width: 100px;
   border-radius: 3px;
-  font-size: 14px;
+  font-size: 0.85em;
   cursor: pointer;
 }
 
@@ -226,12 +227,13 @@ input, textarea, button{
 */
 .tax-calculator {
   text-align: center;
-  width: 30%;
+  width: 90%;
+  max-width: 25rem;
   margin: 40px auto;
 }
 .tax-calculator .radio {
   display: inline-block;
-  margin: 20px 10px;
+  margin: 20px 5px;
 }
 .tax-calculator .initial-amount input {
   margin-left: 15px;
@@ -241,7 +243,7 @@ input, textarea, button{
   width: 70px;
   display: inline-block;
   border: 2px solid #234777;
-  font-size: 13px;
+  font-size: 0.8em;
   height: 49px;
   border-radius: 50%;
   cursor: pointer;
@@ -254,11 +256,10 @@ input, textarea, button{
   color: white;
 }
 .tax-calculator table.result {
-  font-size: 16px;
+  font-size: 1em;
   text-align: center;
   width: 85%;
   margin: 25px auto;
-  font-weight: 500;
   border: 1px solid #CCC;
   border-radius: 5px;
   background: #FAFAFA;
@@ -271,4 +272,7 @@ input, textarea, button{
 }
 .tax-calculator table.result tr:last-child td{
   padding-bottom: 15px;
+}
+.amount{
+  font-weight: 500;
 }
