@@ -8,10 +8,15 @@ import { gstApiUrl } from '../../constants/Endpoints'
 
 export default class GoodCategories extends React.Component {
 
+  local = {
+    fetchedGoodsForCategories: []
+  }
+
   state = {
     data: [],
     status: '',
-    categories: {}
+    categories: {},
+    currentCategory: -1
   }
 
   fetchCategories = () => {
@@ -42,12 +47,20 @@ export default class GoodCategories extends React.Component {
   }
 
   fetchGoods = (categoryId) => {
+    if(this.local.fetchedGoodsForCategories.includes(categoryId)) {
+      let index = this.local.fetchedGoodsForCategories.indexOf(categoryId)
+      if (index > -1) {
+        this.local.fetchedGoodsForCategories.splice(index, 1)
+      }
+      this.setState({currentCategory: -1})
+      return
+    }
     let {categories} = this.state
     categories[categoryId] = {
       status: 'busy',
       goods: []
     }
-    this.setState({categories})
+    this.setState({categories, currentCategory: categoryId})
 
     axios.get(gstApiUrl + '/api/v1/categories/' + categoryId + '/goods')
     .then(response => {
@@ -57,14 +70,14 @@ export default class GoodCategories extends React.Component {
           status: 'success',
           goods: data  
         }
-        this.setState({categories})
       } else {
         categories[categoryId] = {
           status: 'nr',
           goods: []  
         }
-        this.setState({categories})
       }
+      this.setState({categories})
+      this.local.fetchedGoodsForCategories.push(categoryId)
     })
     .catch(error => {
       categories[categoryId] = {
@@ -80,7 +93,7 @@ export default class GoodCategories extends React.Component {
   }
 
   render() {
-    const {data, status, categories} = this.state
+    const {data, status, categories, currentCategory} = this.state
     return(
       <div>
         { // busy
@@ -100,7 +113,11 @@ export default class GoodCategories extends React.Component {
                   return (
                     <div key={row.id} className='link-row'>
                       <a className='name' onClick={this.fetchGoods.bind(this, row.id)}>{index+1}. {row.name}</a>
-                      <Goods data={categories[row.id]} />
+                      <div>
+                        {(currentCategory==row.id) && 
+                          <Goods data={categories[row.id]} />
+                        }
+                      </div>
                     </div>
                   )
                 })
