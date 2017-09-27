@@ -1,4 +1,4 @@
-# react-boilerplate
+# gst-react-app 
 
 ## Installation
 
@@ -12,4 +12,10 @@ Start a local server:
 
 ```
 npm run start
+```
+
+## Deployment
+
+```
+npm run build:prod
 ```
