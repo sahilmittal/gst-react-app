@@ -19,7 +19,7 @@ const Goods = (props) => {
       )
     }
     {
-      (data.status == 'busy'  && <div className='row'>Fetching...</div>)
+      (data.status == 'busy'  && <div className='row'><i className='fa fa-refresh fa-spin'></i></div>)
     }
     {
       (data.status == 'nr'    && <div className='row'>No goods were found for this category</div>)
