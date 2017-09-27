@@ -20,6 +20,7 @@ class App extends React.Component {
   state = {
     data: [],
     searchText: '',
+    searchOption: 'default',
     status: '',
     activePage: 'search'
   }
@@ -35,6 +36,10 @@ class App extends React.Component {
   scrollToBottom = () => {
     const node = ReactDOM.findDOMNode(this.messagesEnd)
     node.scrollIntoView({ behavior: "smooth" })
+  }
+
+  changeSearchOption = (searchOption) => {
+    this.setState({searchOption})
   }
 
   performSearch = (searchParams) => {
@@ -67,13 +72,15 @@ class App extends React.Component {
 
   render () {
 
-    const {searchText, data, status, activePage} = this.state
+    const {searchOption, searchText, data, status, activePage} = this.state
 
     return (
       <div>
-        <Header>GST Search</Header>
-        <Search performSearch={this.performSearch} />
-        <Menu ref={(el) => { this.messagesEnd = el }} activePage={activePage} handlePageChange={this.handlePageChange} />
+        <div className={'sticky '+((searchOption == 'codes') ? 'red' : 'blue' )}>
+          <Header>GST Search</Header>
+          <Search performSearch={this.performSearch} changeSearchOption={this.changeSearchOption} />
+          <Menu ref={(el) => { this.messagesEnd = el }} activePage={activePage} handlePageChange={this.handlePageChange} searchOption={searchOption} />
+        </div>
         { // search/busy
           (activePage == 'search' && status == 'busy') && (<StatusDiv headerText='Loading...' subHeadText='' />)
         }

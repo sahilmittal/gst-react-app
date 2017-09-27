@@ -9,9 +9,9 @@ export default class Menu extends React.Component {
   }
 
   render () {
-    const {page, ico, title, activePage} = this.props
+    const {page, ico, title, activePage, searchOption} = this.props
     return(
-      <div className={'menu-option '+ ((activePage == page) ? 'active' : '')} onClick={this.handleClick.bind(this, page)}>
+      <div className={'menu-option '+ ((activePage == page) ? 'active ' : '') + ((searchOption == 'default') ?'blue': 'red')} onClick={this.handleClick.bind(this, page)}>
         <div className='icon'><i className="material-icons">{ico}</i></div>
         <div className='text'>{title}</div>
       </div>

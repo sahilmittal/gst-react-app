@@ -11,14 +11,14 @@ export default class Menu extends React.Component {
   }
 
   render () {
-    const {activePage} = this.props
+    const {activePage, searchOption} = this.props
     return (
       <div className='menu'>
-        <MenuOption handleClick={this.handleClick} activePage={activePage} page='goodCategories' ico='local_taxi' title='Browse Goods' /> 
-        <MenuOption handleClick={this.handleClick} activePage={activePage} page='services' ico='restaurant' title='Browse Services' /> 
-        <MenuOption handleClick={this.handleClick} activePage={activePage} page='resources' ico='picture_as_pdf' title='Download Resources' /> 
-        <MenuOption handleClick={this.handleClick} activePage={activePage} page='taxCalculator' ico='attach_money' title='Tax Calculator' /> 
-        <MenuOption handleClick={this.handleClick} activePage={activePage} page='feedback' ico='feedback' title='Feedback' /> 
+        <MenuOption searchOption={searchOption} handleClick={this.handleClick} activePage={activePage} page='goodCategories' ico='local_taxi' title='Browse Goods' /> 
+        <MenuOption searchOption={searchOption} handleClick={this.handleClick} activePage={activePage} page='services' ico='restaurant' title='Browse Services' /> 
+        <MenuOption searchOption={searchOption} handleClick={this.handleClick} activePage={activePage} page='resources' ico='picture_as_pdf' title='Download Resources' /> 
+        <MenuOption searchOption={searchOption} handleClick={this.handleClick} activePage={activePage} page='taxCalculator' ico='attach_money' title='Tax Calculator' /> 
+        <MenuOption searchOption={searchOption} handleClick={this.handleClick} activePage={activePage} page='feedback' ico='feedback' title='Feedback' /> 
       </div>
     )
   }

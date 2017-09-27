@@ -1,3 +1,13 @@
+/*
+  constants
+*/
+$lightBlue: #418cff;
+$mediumBlue: #3e84ed;
+$darkBlue: #234777;
+$lightRed: #e03d3d;
+$mediumRed: #c53636;
+$darkRed: #8c2323;
+
 body{
   margin: 0;
   padding: 0;
@@ -37,11 +47,18 @@ input, textarea, button{
 /* 
   Header 
 */
+.sticky{
+  &.blue{
+    background: $lightBlue;
+  }
+  &.red{
+    background: $lightRed;
+  }
+}
 .header{
   font-size: 2.2em;
   font-weight: 500;
   text-align: center;
-  background: #418cff;
   color: white;
   padding: 35px 0;
 }
@@ -52,7 +69,6 @@ input, textarea, button{
 .search{
   text-align: center;
   font-size: 1.2em;
-  background: #418cff;
   padding-bottom: 25px;
   margin: -1px 0;
 }
@@ -63,26 +79,39 @@ input, textarea, button{
   margin: 0 auto;
   position: relative;
 }
-.search-options span{
-  display: inline-block;
-  width: 50%;
-  background: #3e84ed;
-  color: white;
-  cursor: pointer;
-  font-size: 0.8em;
-  padding: 15px 0;
-}
-.search-options span:first-child{
-  border-top-left-radius: 5px; 
-}
-.search-options span:last-child{
-  border-top-right-radius: 5px; 
-}
-.search-options span.active{
-  background: #234777;
-}
-.search-options span:hover{
-  background: #234777;
+.search-options{
+  span{
+    display: inline-block;
+    width: 50%;
+    color: white;
+    cursor: pointer;
+    font-size: 0.8em;
+    padding: 15px 0;
+    &:first-child{
+      border-top-left-radius: 5px; 
+    }
+    &:last-child{
+      border-top-right-radius: 5px; 
+    }
+    &.blue{
+      background: $mediumBlue;
+      &.active{
+        background: $darkBlue;
+      }
+      &:hover{
+        background: $darkBlue;
+      }
+    }
+    &.red{
+      background: $mediumRed;
+      &.active{
+        background: $darkRed;
+      }
+      &:hover{
+        background: $darkRed;
+      }
+    }
+  }
 }
 .search-block input{
   width: 95%;
@@ -103,7 +132,6 @@ input, textarea, button{
   Menu
 */
 .menu {
-  background: #418cff;
   text-align: center;
   padding-bottom: 20px;
 }
@@ -115,21 +143,25 @@ input, textarea, button{
   cursor: pointer;
   vertical-align: bottom;
   color: white;
-  background: #3e84ed;
   border-radius: 5px;
   padding: 5px 0px;
-}
-.menu-option:hover, .menu-option.active {
-  background: #234777;
-  /*color: #234777;*/
-  /*font-weight: 500;*/
-}
-.menu-option .icon {
-}
-.menu-option .text {
-  font-size: 0.75em;
-  min-height: 25px;
-  line-height: 1em;
+  &.blue{
+    background: $mediumBlue;
+    &:hover, &.active{
+      background: $darkBlue;
+    }
+  }
+  &.red{
+    background: $mediumRed;
+    &:hover, &.active{
+      background: $darkRed;
+    }
+  }
+  .text{
+    font-size: 0.75em;
+    min-height: 25px;
+    line-height: 1em;
+  }
 }
 
 /*
@@ -151,7 +183,7 @@ input, textarea, button{
   padding: 10px 20px; 
 }
 .link-row a{
-  color: #234777;
+  color: $darkBlue;
 }
 .label{
   font-size: 0.7em;
@@ -213,7 +245,7 @@ input, textarea, button{
 }
 .feedback .submit-btn{
   display: inline-block;
-  background: #3e84ed;
+  background: $mediumBlue;
   color: white;
   padding: 10px;
   width: 100px;
@@ -242,17 +274,17 @@ input, textarea, button{
 .tax-calculator .gst-btn {
   width: 70px;
   display: inline-block;
-  border: 2px solid #234777;
+  border: 2px solid $darkBlue;
   font-size: 0.8em;
   height: 49px;
   border-radius: 50%;
   cursor: pointer;
   padding-top: 20px;
   margin: 0 15px;
-  color: #234777;
+  color: $darkBlue;
 }
 .tax-calculator .gst-btn.active {
-  background: #234777;
+  background: $darkBlue;
   color: white;
 }
 .tax-calculator table.result {
