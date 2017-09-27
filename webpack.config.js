@@ -27,7 +27,12 @@ var config = {
           'style-loader',
           'css-loader'
         ]
-      }
+      },
+      {
+        test: /\.scss$/,
+        include: SRC_DIR,
+        loaders: ["style-loader", "css-loader", "sass-loader"]
+      },
     ]
   },
   plugins: [

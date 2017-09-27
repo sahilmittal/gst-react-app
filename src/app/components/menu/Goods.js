@@ -18,9 +18,6 @@ const Goods = (props) => {
         </div>
       )
     }
-
-    
-
     {
       (data.status == 'busy'  && <div className='row'>Fetching...</div>)
     }
