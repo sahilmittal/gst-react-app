@@ -1,6 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import Comments from './Comments'
 import { highlighText, isNumber } from '../lib'
 
 const GoodRow = (props) => {
@@ -14,6 +15,7 @@ const GoodRow = (props) => {
         (!hideCategory) && (<div className='category'>{row.category.name}</div>)
       }
       <span dangerouslySetInnerHTML={{__html: htmlText}} />
+      <Comments />
     </div>
   )
 }

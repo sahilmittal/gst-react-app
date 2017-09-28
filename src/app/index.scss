@@ -176,14 +176,17 @@ input, textarea, button{
 */
 .results{
   padding: 10px; 
+  padding-top: 0;
 }
 .results.goods a, .results.resources a{
   font-weight: 400; 
+  font-size: 1.1em;
 }
 .row{
-  font-size: 0.85em;
-  border-bottom: 1px solid #EEE;
+  font-size: 0.9em;
+  border-bottom: 1px solid #CCC;
   padding: 10px 20px;
+  background: #F5f5f5
 }
 .link-row{
   font-size: 0.85em;
@@ -209,12 +212,13 @@ input, textarea, button{
 }
 .gst{
   font-weight: 500; 
+  font-size: 1.1em;
   margin: 6px 0;
 }
 .category{
   margin-top: 5px;
   margin-bottom: 5px;
-  color: #999;
+  color: #777;
 }
 .code{
   font-weight: 500;
@@ -314,6 +318,40 @@ input, textarea, button{
 }
 .amount{
   font-weight: 500;
+}
+
+/*
+  Comments
+*/
+.comments{
+  padding: 5px 10px;
+  margin-top: 5px;
+  background: #FEFEFE;
+  h1{
+    font-size: 12px;
+    font-weight: bold;
+    color: #666;
+    margin: 5px 0;
+
+  }
+  ul{
+    padding-left: 15px;
+    textarea{
+      margin-top: -10px;
+      width: 500px;
+      padding: 7px;
+      margin-bottom: 4px;
+    }
+    .link-container{
+      margin-top: 5px;
+    }
+    button, a{
+      margin-right: 5px;
+    }
+    li{
+      margin: 15px 0;
+    }
+  }
 }
 
 /*
